@@ -93,4 +93,20 @@ public class LineStringTest {
         Assert.assertNotSame(ls, clone_ls);
     }
 
+    @Test
+    public void testEnvelope() {
+        List<Point> points = new ArrayList<Point>();
+        Point point1 = new Point(new Coordinate(1.0,2.0));
+        Point point2 = new Point(new Coordinate(3.0,4.0));
+        points.add(point1);
+        points.add(point2);
+        LineString ls = new LineString(points);
+        Envelope envelope = ls.getEnvelope();
+        Assert.assertNotNull(envelope);
+        Assert.assertEquals(1.0, envelope.getXmin(), EPSILON);
+        Assert.assertEquals(3.0, envelope.getXmax(), EPSILON);
+        Assert.assertEquals(2.0, envelope.getYmin(), EPSILON);
+        Assert.assertEquals(4.0, envelope.getYmax(), EPSILON);
+    }
+
 }

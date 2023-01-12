@@ -16,8 +16,9 @@ public class EnvelopeBuilder {
         this.xVals.add(coordinate.getX());
         this.yVals.add(coordinate.getY());
     }
-    public Envelope Build(){
+    public Envelope build(){
         Coordinate bottomLeft = new Coordinate(Collections.min(xVals), Collections.min(yVals));
         Coordinate topLeft = new Coordinate(Collections.max(xVals), Collections.max(yVals));
+        return new Envelope(bottomLeft, topLeft);
     }
 }

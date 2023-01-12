@@ -51,4 +51,14 @@ public class PointTest {
         Assert.assertNotSame(point, clonePoint);
     }
 
+    @Test
+    public void testEnvelope() {
+        Point p = new Point(new Coordinate(1.0,2.0));
+        Envelope envelope = p.getEnvelope();
+        Assert.assertNotNull(envelope);
+        Assert.assertEquals(1.0, envelope.getXmin(), EPSILON);
+        Assert.assertEquals(1.0, envelope.getXmax(), EPSILON);
+        Assert.assertEquals(2.0, envelope.getYmin(), EPSILON);
+        Assert.assertEquals(2.0, envelope.getYmax(), EPSILON);
+    }
 }
