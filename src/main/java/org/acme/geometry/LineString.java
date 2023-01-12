@@ -31,7 +31,7 @@ public class LineString implements Geometry {
     }
 
     @Override
-    public Geometry clone() {
+    public LineString clone() {
         return new LineString(this.points);
     }
 
@@ -41,8 +41,7 @@ public class LineString implements Geometry {
         for (Point p: points){
             envelopeBuilder.insert(p.getCoordinate());
         }
-        Envelope envelope = envelopeBuilder.build();
-        return envelope;
+        return envelopeBuilder.build();
     }
 
     public int getNumPoints() {

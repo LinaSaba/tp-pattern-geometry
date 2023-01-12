@@ -29,7 +29,7 @@ public class Point implements Geometry {
     }
 
     @Override
-    public Geometry clone() {
+    public Point clone() {
         return new Point(this.getCoordinate());
     }
 
