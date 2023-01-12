@@ -79,5 +79,18 @@ public class LineStringTest {
             Assert.assertEquals(7.0,c2.getY(), EPSILON);
         }
     }
+    @Test
+    public void testClone() {
+        List<Point> points = new ArrayList<Point>();
+        Point point1 = new Point(new Coordinate(1.0,2.0));
+        Point point2 = new Point(new Coordinate(3.0,4.0));
+        points.add(point1);
+        points.add(point2);
+        LineString ls = new LineString(points);
+        LineString clone_ls = (LineString) ls.clone();
+        Assert.assertEquals(ls.getPointN(0), clone_ls.getPointN(0));
+        Assert.assertEquals(ls.getPointN(1), clone_ls.getPointN(1));
+        Assert.assertNotSame(ls, clone_ls);
+    }
 
 }
