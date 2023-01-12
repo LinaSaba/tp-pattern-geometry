@@ -44,6 +44,10 @@ public class LineString implements Geometry {
         return envelopeBuilder.build();
     }
 
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
+    }
     public int getNumPoints() {
         return points.size();
     }
