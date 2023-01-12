@@ -33,6 +33,7 @@ public class LineStringTest {
         Assert.assertEquals("LineString", lineString.getType());
     }
 
+
     @Test
     public void testGetNumPoints() {
         List<Point> points = new ArrayList<Point>();
@@ -48,12 +49,35 @@ public class LineStringTest {
     public void testGetPointN() {
         List<Point> points = new ArrayList<Point>();
         Point p1 = new Point(new Coordinate(10.0, 15.2));
-        Point p2 = new Point(new Coordinate(2.0, 19.2)));
+        Point p2 = new Point(new Coordinate(2.0, 19.2));
         points.add(p1);
         points.add(p2);
         LineString lineString = new LineString(points);
         Assert.assertSame(p1, lineString.getPointN(0));
         Assert.assertSame(p2, lineString.getPointN(1));
+    }
+
+    @Test
+    public void testTranslate(){
+        List<Point> points = new ArrayList<Point>();
+        Point point1 = new Point(new Coordinate(1.0,2.0));
+        Point point2 = new Point(new Coordinate(3.0,4.0));
+        points.add(point1);
+        points.add(point2);
+        LineString ls = new LineString(points);
+        ls.translate(2.0,3.0);
+        // controle premier point
+        {
+            Coordinate c1 = ls.getPointN(0).getCoordinate();
+            Assert.assertEquals(3.0,c1.getX(), EPSILON);
+            Assert.assertEquals(5.0,c1.getY(), EPSILON);
+        }
+        // controle deuxieme point
+        {
+            Coordinate c2 = ls.getPointN(1).getCoordinate();
+            Assert.assertEquals(5.0,c2.getX(), EPSILON);
+            Assert.assertEquals(7.0,c2.getY(), EPSILON);
+        }
     }
 
 }

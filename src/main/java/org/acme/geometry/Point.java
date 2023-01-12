@@ -17,7 +17,19 @@ public class Point implements Geometry {
         return "Point";
     }
 
+    @Override
+    public boolean isEmpty() {
+        return this.coordinate.isEmpty();
+    }
+
+    @Override
+    public void translate(double dx, double dy) {
+        Coordinate coordinate = new Coordinate(this.coordinate.getX() + dx,this.coordinate.getY() + dy);
+        this.coordinate = coordinate;
+    }
+
     public Coordinate getCoordinate(){
         return this.coordinate;
     }
+
 }
