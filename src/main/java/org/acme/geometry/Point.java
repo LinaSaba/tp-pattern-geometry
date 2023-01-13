@@ -1,6 +1,6 @@
 package org.acme.geometry;
 
-public class Point implements Geometry {
+public class Point extends AbstractGeometry {
 
     private Coordinate coordinate;
 
@@ -44,6 +44,7 @@ public class Point implements Geometry {
     public void accept(GeometryVisitor visitor) {
         visitor.visit(this);
     }
+
 
     public Coordinate getCoordinate(){
         return this.coordinate;
